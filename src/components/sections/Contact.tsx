@@ -86,7 +86,7 @@ export default function Contact() {
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }}>
               <a href={`mailto:${contact.email}`} className="flex items-center gap-4 p-6 glass-panel hover:border-brand-cyan/50 hover:shadow-[0_0_20px_rgba(0,255,204,0.15)] active:scale-95 transition-all group">
                 <div className="p-4 bg-brand-cyan/10 rounded-full text-brand-cyan group-hover:scale-110 transition-transform">
-                  <FiMail size={24} />
+                  <FiMail size={23} />
                 </div>
                 <div>
                   <div className="text-sm text-slate-400 font-mono">Email</div>
