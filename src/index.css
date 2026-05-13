@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  
+  --color-brand-cyan: #00f5ff;
+  --color-brand-purple: #a020f0;
+  --color-brand-green: #39ff14;
+  --color-brand-blue: #00d2ff;
+  --color-bg-dark: #050505;
+  --color-bg-panel: rgba(255, 255, 255, 0.12);
+  --color-border-glow: rgba(255, 255, 255, 0.1);
+}
+
+@layer base {
+  body {
+    @apply bg-bg-dark text-slate-300 font-sans antialiased overflow-x-hidden selection:bg-brand-cyan/30 selection:text-brand-cyan;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display text-white font-bold tracking-tight;
+  }
+}
+
+@layer utilities {
+  .glass-panel {
+    @apply bg-bg-panel backdrop-blur-[12px] border border-white/20 rounded-3xl p-6 relative overflow-hidden;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+  }
+  .glass-card {
+    @apply bg-bg-panel backdrop-blur-[12px] border border-white/20 rounded-3xl p-6 relative overflow-hidden;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+  }
+  .neon-cyan {
+    @apply border-brand-cyan/30 shadow-[0_0_20px_rgba(0,245,255,0.1)];
+  }
+  .neon-purple {
+    @apply border-brand-purple/30 shadow-[0_0_20px_rgba(160,32,240,0.1)];
+  }
+  .neon-green {
+    @apply border-brand-green/30 shadow-[0_0_20px_rgba(57,255,20,0.1)];
+  }
+  .text-glow {
+    text-shadow: 0 0 20px currentColor;
+  }
+  .neon-border {
+    box-shadow: 0 0 15px currentColor;
+  }
+  .grid-bg-overlay {
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px);
+    background-size: 40px 40px;
+    mask-image: radial-gradient(circle at 50% 50%, black, transparent 80%);
+    z-index: -1;
+    pointer-events: none;
+  }
+
+  .avatar-ring {
+    @apply w-[120px] h-[120px] rounded-full mx-auto mb-4 p-1 bg-gradient-to-tr from-brand-cyan to-brand-purple flex items-center justify-center;
+  }
+  .badge {
+    @apply text-[10px] uppercase tracking-[2px] text-brand-cyan mb-2 block font-mono;
+  }
+  .skill-pill {
+    @apply bg-white/5 border border-white/10 px-3 py-2 rounded-xl text-xs flex items-center gap-2;
+  }
+  .skill-dot {
+    @apply w-1.5 h-1.5 rounded-full;
+  }
+  .bento-tag {
+    @apply text-[11px] font-medium py-1 px-2.5 rounded-lg bg-white/20 border border-white/20 text-white mr-1.5 backdrop-blur-sm shadow-sm transition-all hover:bg-white/30;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-bg-dark;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-white/20 rounded-full hover:bg-white/40 transition-colors;
+}

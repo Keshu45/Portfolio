@@ -1,0 +1,153 @@
+{
+  "personal": {
+    "name": "Keshav Patidar",
+    "roles": [
+      "Full Stack Developer",
+      "CSIT Student",
+      "Problem Solver",
+      "Tech Enthusiast"
+    ],
+    "heroDescription": "Passionate Full Stack Developer focused on building modern web applications, solving real-world problems, and continuously learning emerging technologies.",
+    "resumeLink": "https://drive.google.com/file/d/1_70ZktreNMJmQ_sqh2ONX_69Z_7IC7F0/view?usp=drivesdk",
+    "profileImage": "https://drive.google.com/thumbnail?id=1jZM09P70OHvb2m_el9_sXTFLRX2J9zXf&sz=w1000",
+    "about": {
+      "paragraphs": [
+        "I’m Keshav Patidar, a third-year CSIT student at Acropolis Institute of Technology and Research and a passionate full stack developer from Indore, India. I enjoy building modern web applications, exploring AI technologies, and working on real-world projects that solve practical problems.",
+        "I believe in discipline, smart work, and continuous learning, and I’m always looking for opportunities to improve my technical and problem-solving skills through projects and hands-on experience."
+      ],
+      "stats": [
+        { "label": "Experience", "value": "Fresher" },
+        { "label": "Projects Built", "value": "5+" },
+        { "label": "Technologies", "value": "5+" },
+        { "label": "Commits", "value": "500+" }
+      ],
+      "education": [
+        {
+          "degree": "Bachelor of Technology (B.Tech) in CSIT",
+          "institution": "Acropolis Institute of Technology and Research",
+          "period": "2023 – 2027",
+          "theme": "cyan",
+          "isCurrent": true
+        },
+        {
+          "degree": "Higher Secondary Education (12th)",
+          "institution": "Manas Academy School Bidwal",
+          "period": "Completed in 2022",
+          "theme": "purple",
+          "isCurrent": false
+        },
+        {
+          "degree": "Secondary Education (10th)",
+          "institution": "Camellia Kids College Bidwal",
+          "period": "Completed in 2020",
+          "theme": "green",
+          "isCurrent": false
+        }
+      ]
+    },
+    "contact": {
+      "email": "ksvpatidar3180@gmail.com",
+      "mobile": "9770153180",
+      "linkedin": "https://www.linkedin.com/in/keshav-patidar-8bbbab307?utm_source=share_via&utm_content=profile&utm_medium=member_android",
+      "github": "https://github.com/Keshu45",
+      "location": "Indore, Madhya Pradesh",
+      "description": "I'm always open to discussing new projects, creative ideas or opportunities to be part of your visions. Feel free to reach out to me!"
+    }
+  },
+  "skills": [
+    {
+      "title": "Frontend",
+      "color": "cyan",
+      "items": ["HTML", "CSS", "JavaScript", "React.js", "Tailwind CSS"]
+    },
+    {
+      "title": "Backend",
+      "color": "purple",
+      "items": ["Node.js", "Express.js"]
+    },
+    {
+      "title": "Database",
+      "color": "green",
+      "items": ["MongoDB", "MySQL"]
+    },
+    {
+      "title": "Tools & Soft Skills",
+      "color": "blue",
+      "items": ["Git", "GitHub", "Problem Solving", "Teamwork"]
+    }
+  ],
+  "projects": [
+    {
+      "title": "Green Mitra",
+      "subtitle": "Smart Agriculture Testing & Advisory System",
+      "description": "IoT-based smart agriculture solution using ESP32 and sensors to monitor NPK values, moisture, and pH levels. It provides precision farming insights and crop/fertilizer recommendations through a full-stack dashboard.",
+      "tech": ["React", "Node.js", "ESP32", "IoT", "MongoDB"],
+      "image": "https://drive.google.com/thumbnail?id=1T1MtLS0YHDGVI7FzeZEUayNjLCn8WTrL&sz=w1000",
+      "colorTheme": "green",
+      "github": "#",
+      "live": "#"
+    },
+    {
+      "title": "Campus Connect",
+      "subtitle": "College Communication Platform",
+      "description": "A centralized college communication and management platform to share notices, events, updates, and academic information. Dramatically improves student-faculty communication and record keeping.",
+      "tech": ["React", "Express.js", "MongoDB", "Tailwind CSS"],
+      "image": "https://drive.google.com/thumbnail?id=1WgPuUMWVtdDqmgN0jF1qt9yyLx1B3vnL&sz=w1000",
+      "colorTheme": "blue",
+      "github": "#",
+      "live": "#"
+    },
+    {
+      "title": "AI Attendance System",
+      "subtitle": "Face Recognition Attendance Management",
+      "description": "AI-powered attendance management system utilizing webcam face recognition to automatically mark digital attendance. Reduces manual work and significantly increases accuracy.",
+      "tech": ["Python", "OpenCV", "Face Recognition", "React"],
+      "image": "https://drive.google.com/thumbnail?id=1jXcvfsrZSIAaNgKcJV9kN0RAklRz1_8m&sz=w1000",
+      "colorTheme": "cyan",
+      "github": "#",
+      "live": "#"
+    },
+    {
+      "title": "AI Interviewer",
+      "subtitle": "Strict Professional Interview System",
+      "description": "AI-based technical interview preparation system that asks technical questions, analyzes answers in real-time, and provides constructive feedback to help candidates improve their communication and performance.",
+      "tech": ["React", "OpenAI API", "Node.js", "WebRTC"],
+      "image": "https://images.unsplash.com/photo-1573167101669-476636b96cea?w=800&q=80",
+      "colorTheme": "purple",
+      "github": "#",
+      "live": "#"
+    }
+  ],
+  "certificates": [
+    {
+      "title": "Database Management System",
+      "issuer": "",
+      "date": "2024",
+      "link": "https://drive.google.com/file/d/1jcKT0g28sa9QnZe99wzMXpzWj9ruEHvg/view?usp=drivesdk"
+    },
+    {
+      "title": "Fortinet Certified Fundamental in Cybersecurity",
+      "issuer": "Fortinet",
+      "date": "2024",
+      "link": "https://drive.google.com/file/d/1xfaTGHie7tfC55snCOr6YCqXYs7BAHLJ/view?usp=drivesdk"
+    },
+    {
+      "title": "Fundamental of Object Oriented programming Methodology",
+      "issuer": "",
+      "date": "2024",
+      "link": "https://drive.google.com/file/d/1nbhHBwdajndaa0-XtcfyBry8eGE4Fsx_/view?usp=drivesdk"
+    },
+    {
+      "title": "Programming in Java",
+      "issuer": "",
+      "date": "2024",
+      "link": "https://drive.google.com/file/d/1qTGyinM61wXI76V8K8YInwKqBjnYsggL/view?usp=drivesdk"
+    },
+    {
+      "title": "Oracle generative AI",
+      "issuer": "Oracle",
+      "date": "2024",
+      "link": "https://drive.google.com/file/d/1Dr14gcU_8etnR5EoOpi7W7LaD3ITXf-m/view?usp=drivesdk"
+    }
+  ]
+}
