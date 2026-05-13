@@ -84,25 +84,25 @@ export default function Contact() {
             </motion.p>
 
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }}>
-              <a href={`mailto:${contact.email}`} className="flex items-center gap-4 p-6 glass-panel hover:border-brand-cyan/50 hover:shadow-[0_0_20px_rgba(0,255,204,0.15)] active:scale-95 transition-all group">
-                <div className="p-4 bg-brand-cyan/10 rounded-full text-brand-cyan group-hover:scale-110 transition-transform">
-                  <FiMail size={23} />
+              <a href={`mailto:${contact.email}`} className="flex items-center gap-3 sm:gap-4 p-4 sm:p-6 glass-panel hover:border-brand-cyan/50 hover:shadow-[0_0_20px_rgba(0,255,204,0.15)] active:scale-95 transition-all group overflow-hidden">
+                <div className="p-3 sm:p-4 bg-brand-cyan/10 rounded-full text-brand-cyan group-hover:scale-110 transition-transform shrink-0">
+                  <FiMail className="w-5 h-5 sm:w-6 sm:h-6" />
                 </div>
-                <div>
-                  <div className="text-sm text-slate-400 font-mono">Email</div>
-                  <div className="text-lg text-white font-medium">{contact.email}</div>
+                <div className="min-w-0 flex-1">
+                  <div className="text-xs sm:text-sm text-slate-400 font-mono">Email</div>
+                  <div className="text-sm sm:text-lg text-white font-medium break-all">{contact.email}</div>
                 </div>
               </a>
             </motion.div>
 
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }}>
-              <a href={`tel:${contact.mobile}`} className="flex items-center gap-4 p-6 glass-panel hover:border-brand-green/50 hover:shadow-[0_0_20px_rgba(57,255,20,0.15)] active:scale-95 transition-all group">
-                <div className="p-4 bg-brand-green/10 rounded-full text-brand-green group-hover:scale-110 transition-transform">
-                  <FiPhone size={24} />
+              <a href={`tel:${contact.mobile}`} className="flex items-center gap-3 sm:gap-4 p-4 sm:p-6 glass-panel hover:border-brand-green/50 hover:shadow-[0_0_20px_rgba(57,255,20,0.15)] active:scale-95 transition-all group overflow-hidden">
+                <div className="p-3 sm:p-4 bg-brand-green/10 rounded-full text-brand-green group-hover:scale-110 transition-transform shrink-0">
+                  <FiPhone className="w-5 h-5 sm:w-6 sm:h-6" />
                 </div>
-                <div>
-                  <div className="text-sm text-slate-400 font-mono">Mobile</div>
-                  <div className="text-lg text-white font-medium">{contact.mobile}</div>
+                <div className="min-w-0 flex-1">
+                  <div className="text-xs sm:text-sm text-slate-400 font-mono">Mobile</div>
+                  <div className="text-sm sm:text-lg text-white font-medium break-all">{contact.mobile}</div>
                 </div>
               </a>
             </motion.div>
@@ -123,9 +123,9 @@ export default function Contact() {
                 <div className="p-4 bg-brand-purple/10 rounded-full text-brand-purple">
                   <FiMapPin size={24} />
                 </div>
-                <div>
+                <div className="min-w-0 flex-1">
                   <div className="text-sm text-slate-400 font-mono">Location</div>
-                  <div className="text-lg text-white font-medium">{contact.location}</div>
+                  <div className="text-lg text-white font-medium break-all">{contact.location}</div>
                 </div>
               </div>
             </motion.div>
@@ -201,4 +201,4 @@ export default function Contact() {
       </div>
     </section>
   );
-}
+            }
