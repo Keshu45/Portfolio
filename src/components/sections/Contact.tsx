@@ -120,8 +120,8 @@ export default function Contact() {
             
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.4 }}>
               <div className="flex items-center gap-4 p-6 glass-panel">
-                <div className="p-4 bg-brand-purple/10 rounded-full text-brand-purple">
-                  <FiMapPin size={24} />
+                <div className="p-4 sm:p-4 bg-brand-purple/10 rounded-full text-brand-purple">
+                  <FiMapPin className="w-5 h-5 sm:w-6 sm:h-6" />
                 </div>
                 <div className="min-w-0 flex-1">
                   <div className="text-sm text-slate-400 font-mono">Location</div>
