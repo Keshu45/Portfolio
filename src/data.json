@@ -92,7 +92,7 @@
       "subtitle": "College Communication Platform",
       "description": "A centralized college communication and management platform to share notices, events, updates, and academic information. Dramatically improves student-faculty communication and record keeping.",
       "tech": ["React", "Express.js", "MongoDB", "Tailwind CSS"],
-      "image": "https://drive.google.com/thumbnail?id=1WgPuUMWVtdDqmgN0jF1qt9yyLx1B3vnL&sz=w1000",
+      "image": "https://drive.google.com/file/d/1rzelTBJRgc6gVMLn36NxVNQmr5ciY3Yy/view?usp=drivesdk",
       "colorTheme": "blue",
       "github": "#",
       "live": "#"
