@@ -20,14 +20,14 @@ export default function About() {
           <div className="w-24 h-1 bg-gradient-to-r from-brand-cyan to-brand-purple mx-auto rounded-full" />
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-stretch">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
           
           <motion.div 
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="md:col-span-5 glass-panel text-center neon-cyan flex flex-col"
+            className="lg:col-span-5 glass-panel text-center neon-cyan flex flex-col"
           >
             <span className="badge">Available for Internships</span>
             <div className="avatar-ring mt-4">
@@ -53,7 +53,7 @@ export default function About() {
              whileInView={{ opacity: 1, x: 0 }}
              viewport={{ once: true, margin: "-100px" }}
              transition={{ duration: 0.6, delay: 0.4 }}
-             className="md:col-span-7 flex flex-col gap-6"
+             className="lg:col-span-7 flex flex-col gap-6"
           >
             <div className="glass-panel flex-1 flex flex-col">
               <h3 className="text-[14px] uppercase tracking-[1px] mb-[12px] text-brand-purple font-bold">About Me</h3>

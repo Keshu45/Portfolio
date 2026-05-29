@@ -42,7 +42,7 @@ export default function Projects() {
           <div className="w-24 h-1 bg-gradient-to-r from-brand-blue to-brand-cyan mx-auto rounded-full" />
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map((project, idx) => {
             const isWide = idx === 0 || idx === 3;
             const themeClass = colorThemes[project.colorTheme] || colorThemes.cyan;
@@ -56,7 +56,7 @@ export default function Projects() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.6, delay: idx * 0.1 }}
-              className={`glass-panel flex flex-col justify-between h-full group transition-all duration-500 ease-out border border-white/10 hover:-translate-y-2 ${themeClass} ${isWide ? 'md:col-span-2' : 'md:col-span-1'}`}
+              className={`glass-panel flex flex-col justify-between h-full group transition-all duration-500 ease-out border border-white/10 hover:-translate-y-2 ${themeClass} ${isWide ? 'lg:col-span-2 md:col-span-2' : 'col-span-1'}`}
             >
               <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-4 gap-2">
                 <h4 className="m-0 text-xl font-display font-bold text-white">{project.title}</h4>

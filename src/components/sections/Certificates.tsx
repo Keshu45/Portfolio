@@ -1,5 +1,6 @@
-import { motion } from 'motion/react';
-import { FiAward, FiExternalLink } from 'react-icons/fi';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
+import { FiAward, FiExternalLink, FiX } from 'react-icons/fi';
 import { useData } from '../../context/DataContext';
 
 const themeMap = [
@@ -14,8 +15,24 @@ const colorMap = [
   "text-brand-green"
 ];
 
+const getThumbnailUrl = (link: string) => {
+  if (link.includes('drive.google.com')) {
+    const match = link.match(/\/d\/([a-zA-Z0-9_-]+)/);
+    if (match && match[1]) {
+      return `https://drive.google.com/thumbnail?id=${match[1]}&sz=w2000`;
+    }
+  }
+  return link;
+};
+
 export default function Certificates() {
   const { certificates } = useData();
+  const [selectedCert, setSelectedCert] = useState<{title: string, link: string} | null>(null);
+
+  const handlePreview = (e: React.MouseEvent, cert: any) => {
+    e.preventDefault();
+    setSelectedCert(cert);
+  };
 
   return (
     <section id="certificates" className="py-24 relative z-10 px-6">
@@ -54,7 +71,11 @@ export default function Certificates() {
                
                <div className="flex items-center justify-between text-sm mt-auto pt-6 border-t border-white/10">
                  <span className={`font-mono font-bold ${colorMap[idx % 3]}`}>{cert.date}</span>
-                 <a href={cert.link} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 opacity-80 hover:opacity-100 transition-all active:scale-95 font-medium text-white">
+                 <a 
+                   href={cert.link} 
+                   onClick={(e) => handlePreview(e, cert)}
+                   className="flex items-center gap-1 opacity-80 hover:opacity-100 transition-all active:scale-95 font-medium text-white cursor-pointer"
+                 >
                    Preview <FiExternalLink size={14} />
                  </a>
                </div>
@@ -62,6 +83,51 @@ export default function Certificates() {
           ))}
         </div>
       </div>
+
+      {/* Certificate Modal */}
+      <AnimatePresence>
+        {selectedCert && (
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setSelectedCert(null)}
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-bg-dark/80 backdrop-blur-sm"
+          >
+            <motion.div 
+              initial={{ scale: 0.95, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.95, opacity: 0 }}
+              onClick={(e) => e.stopPropagation()}
+              className="relative w-full max-w-4xl bg-bg-panel border border-white/10 rounded-2xl shadow-2xl overflow-hidden flex flex-col"
+              style={{ maxHeight: 'calc(100vh - 40px)' }}
+            >
+              {/* Modal Header */}
+              <div className="flex items-center justify-between p-4 border-b border-white/10 bg-bg-dark/50">
+                <h3 className="text-lg font-bold text-white truncate pr-4">{selectedCert.title}</h3>
+                <button 
+                  onClick={() => setSelectedCert(null)}
+                  className="p-2 bg-white/5 hover:bg-white/10 rounded-full transition-colors text-white"
+                >
+                  <FiX size={20} />
+                </button>
+              </div>
+              
+              {/* Modal Content */}
+              <div className="p-4 flex-1 overflow-auto flex items-center justify-center bg-bg-dark/20">
+                <div className="relative w-full rounded-xl overflow-hidden shadow-lg border border-white/5 bg-white">
+                  <img 
+                    src={getThumbnailUrl(selectedCert.link)} 
+                    alt={selectedCert.title} 
+                    className="w-full h-auto object-contain max-h-[70vh] mx-auto"
+                    referrerPolicy="no-referrer"
+                  />
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }

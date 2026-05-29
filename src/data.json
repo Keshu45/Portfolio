@@ -8,7 +8,7 @@
       "Tech Enthusiast"
     ],
     "heroDescription": "Passionate Full Stack Developer focused on building modern web applications, solving real-world problems, and continuously learning emerging technologies.",
-    "resumeLink": "https://drive.google.com/file/d/1_70ZktreNMJmQ_sqh2ONX_69Z_7IC7F0/view?usp=drivesdk",
+    "resumeLink": "https://drive.google.com/file/d/1_70ZktreNMJmQ_sqh2ONX_69Z_7IC7F0/preview",
     "profileImage": "https://drive.google.com/thumbnail?id=1jZM09P70OHvb2m_el9_sXTFLRX2J9zXf&sz=w1000",
     "about": {
       "paragraphs": [
@@ -47,6 +47,7 @@
     },
     "contact": {
       "email": "ksvpatidar3180@gmail.com",
+      "mobile": "9770153180",
       "linkedin": "https://www.linkedin.com/in/keshav-patidar-8bbbab307?utm_source=share_via&utm_content=profile&utm_medium=member_android",
       "github": "https://github.com/Keshu45",
       "location": "Indore, Madhya Pradesh",
@@ -100,7 +101,7 @@
       "title": "AI Attendance System",
       "subtitle": "Face Recognition Attendance Management",
       "description": "AI-powered attendance management system utilizing webcam face recognition to automatically mark digital attendance. Reduces manual work and significantly increases accuracy.",
-      "tech": ["Python", "OpenCV", "Face Recognition",],
+      "tech": ["Python", "OpenCV", "Face Recognition", "React"],
       "image": "https://drive.google.com/thumbnail?id=1jXcvfsrZSIAaNgKcJV9kN0RAklRz1_8m&sz=w1000",
       "colorTheme": "cyan",
       "github": "#",
@@ -110,7 +111,7 @@
       "title": "AI Interviewer",
       "subtitle": "Strict Professional Interview System",
       "description": "AI-based technical interview preparation system that asks technical questions, analyzes answers in real-time, and provides constructive feedback to help candidates improve their communication and performance.",
-      "tech": ["React", "Gemini API", "Node.js", "WebRTC"],
+      "tech": ["React", "OpenAI API", "Node.js", "WebRTC"],
       "image": "https://images.unsplash.com/photo-1573167101669-476636b96cea?w=800&q=80",
       "colorTheme": "purple",
       "github": "#",
@@ -147,6 +148,65 @@
       "issuer": "Oracle",
       "date": "2024",
       "link": "https://drive.google.com/file/d/1Dr14gcU_8etnR5EoOpi7W7LaD3ITXf-m/view?usp=drivesdk"
+    }
+  ],
+  "_comment_for_future": "Since JSON doesn't support // comments, use these below templates when you want to add more later. Just copy the objects from _draftProjects or _draftCertificates and paste them into the main 'projects' and 'certificates' arrays above, then fill in your actual details.",
+  "_draftProjects": [
+    {
+      "title": "Future Project 1",
+      "subtitle": "Project Subtitle here",
+      "description": "Project description goes here...",
+      "tech": ["Tech 1", "Tech 2", "Tech 3"],
+      "image": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&q=80",
+      "colorTheme": "cyan",
+      "github": "#",
+      "live": "#"
+    },
+    {
+      "title": "Future Project 2",
+      "subtitle": "Project Subtitle here",
+      "description": "Project description goes here...",
+      "tech": ["Tech 1", "Tech 2", "Tech 3"],
+      "image": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&q=80",
+      "colorTheme": "purple",
+      "github": "#",
+      "live": "#"
+    },
+    {
+      "title": "Future Project 3",
+      "subtitle": "Project Subtitle here",
+      "description": "Project description goes here...",
+      "tech": ["Tech 1", "Tech 2", "Tech 3"],
+      "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
+      "colorTheme": "green",
+      "github": "#",
+      "live": "#"
+    }
+  ],
+  "_draftCertificates": [
+    {
+      "title": "Future Certificate 1",
+      "issuer": "Issuer Name",
+      "date": "202X",
+      "link": "https://drive.google.com/file/d/YOUR_FILE_ID_HERE/view"
+    },
+    {
+      "title": "Future Certificate 2",
+      "issuer": "Issuer Name",
+      "date": "202X",
+      "link": "https://drive.google.com/file/d/YOUR_FILE_ID_HERE/view"
+    },
+    {
+      "title": "Future Certificate 3",
+      "issuer": "Issuer Name",
+      "date": "202X",
+      "link": "https://drive.google.com/file/d/YOUR_FILE_ID_HERE/view"
+    },
+    {
+      "title": "Future Certificate 4",
+      "issuer": "Issuer Name",
+      "date": "202X",
+      "link": "https://drive.google.com/file/d/YOUR_FILE_ID_HERE/view"
     }
   ]
 }

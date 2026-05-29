@@ -5,13 +5,15 @@
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
   
-  --color-brand-cyan: #00f5ff;
-  --color-brand-purple: #a020f0;
-  --color-brand-green: #39ff14;
-  --color-brand-blue: #00d2ff;
-  --color-bg-dark: #050505;
-  --color-bg-panel: rgba(255, 255, 255, 0.12);
-  --color-border-glow: rgba(255, 255, 255, 0.1);
+  --color-brand-cyan: #06b6d4;      /* Cyan 500 */
+  --color-brand-purple: #8b5cf6;    /* Violet 500 */
+  --color-brand-pink: #d946ef;      /* Fuchsia 500 */
+  --color-brand-blue: #3b82f6;      /* Blue 500 */
+  --color-brand-green: #10b981;     /* Emerald 500 */
+  
+  --color-bg-dark: #000000;         /* Pure Black */
+  --color-bg-panel: rgba(15, 23, 42, 0.5);
+  --color-border-glow: rgba(255, 255, 255, 0.08);
 }
 
 @layer base {
@@ -25,12 +27,12 @@
 
 @layer utilities {
   .glass-panel {
-    @apply bg-bg-panel backdrop-blur-[12px] border border-white/20 rounded-3xl p-6 relative overflow-hidden;
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+    @apply bg-bg-panel backdrop-blur-[16px] border border-white/5 rounded-3xl p-6 relative overflow-hidden;
+    box-shadow: 0 4px 24px -1px rgba(0, 0, 0, 0.3);
   }
   .glass-card {
-    @apply bg-bg-panel backdrop-blur-[12px] border border-white/20 rounded-3xl p-6 relative overflow-hidden;
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+    @apply bg-bg-panel backdrop-blur-[16px] border border-white/5 rounded-3xl p-6 relative overflow-hidden;
+    box-shadow: 0 4px 24px -1px rgba(0, 0, 0, 0.3);
   }
   .neon-cyan {
     @apply border-brand-cyan/30 shadow-[0_0_20px_rgba(0,245,255,0.1)];
@@ -47,18 +49,23 @@
   .neon-border {
     box-shadow: 0 0 15px currentColor;
   }
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-brand-cyan via-brand-pink to-brand-purple;
+  }
   .grid-bg-overlay {
     position: absolute;
     inset: 0;
-    background-image: linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px);
-    background-size: 40px 40px;
-    mask-image: radial-gradient(circle at 50% 50%, black, transparent 80%);
+    background-image: 
+      linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px), 
+      linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+    background-size: 64px 64px;
+    mask-image: radial-gradient(ellipse at 50% 50%, black 10%, transparent 60%);
     z-index: -1;
     pointer-events: none;
   }
 
   .avatar-ring {
-    @apply w-[120px] h-[120px] rounded-full mx-auto mb-4 p-1 bg-gradient-to-tr from-brand-cyan to-brand-purple flex items-center justify-center;
+    @apply w-[120px] h-[120px] rounded-full mx-auto mb-4 p-1 bg-gradient-to-tr from-brand-cyan via-brand-pink to-brand-purple flex items-center justify-center;
   }
   .badge {
     @apply text-[10px] uppercase tracking-[2px] text-brand-cyan mb-2 block font-mono;

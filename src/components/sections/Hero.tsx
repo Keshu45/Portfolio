@@ -1,7 +1,28 @@
 import { useState, useEffect } from 'react';
-import { motion } from 'motion/react';
-import { FiDownload, FiArrowRight } from 'react-icons/fi';
+import { motion, AnimatePresence } from 'motion/react';
+import { FiDownload, FiArrowRight, FiExternalLink, FiX } from 'react-icons/fi';
 import { useData } from '../../context/DataContext';
+
+const getThumbnailUrl = (link: string) => {
+  if (link.includes('drive.google.com')) {
+    const match = link.match(/\/d\/([a-zA-Z0-9_-]+)/);
+    if (match && match[1]) {
+      return `https://drive.google.com/thumbnail?id=${match[1]}&sz=w2000`;
+    }
+  }
+  return link;
+};
+
+const getDownloadUrl = (link: string) => {
+  if (link.includes('drive.google.com')) {
+    const match = link.match(/\/d\/([a-zA-Z0-9_-]+)/);
+    if (match && match[1]) {
+      // Direct download link for Google Drive
+      return `https://drive.google.com/uc?export=download&id=${match[1]}`;
+    }
+  }
+  return link;
+};
 
 function Typewriter({ texts }: { texts: string[] }) {
   const [currentText, setCurrentText] = useState('');
@@ -43,6 +64,12 @@ function Typewriter({ texts }: { texts: string[] }) {
 
 export default function Hero() {
   const { personal } = useData();
+  const [showResume, setShowResume] = useState(false);
+
+  const handleResumePreview = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setShowResume(true);
+  };
 
   return (
     <section id="home" className="min-h-[70vh] md:min-h-[80vh] flex items-center justify-center pt-8 md:pt-12 px-6 relative">
@@ -86,11 +113,12 @@ export default function Hero() {
               <FiArrowRight className="group-hover:translate-x-1 transition-transform" />
             </a>
             <a 
-              href={personal.resumeLink} target="_blank" rel="noreferrer"
-              className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-transparent border border-white/20 hover:border-brand-purple text-white hover:text-brand-purple transition-all flex items-center justify-center gap-2 hover:shadow-[0_0_20px_rgba(176,38,255,0.4)] active:scale-95 group"
+              href={personal.resumeLink}
+              onClick={handleResumePreview}
+              className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-transparent border border-white/20 hover:border-brand-purple text-white hover:text-brand-purple transition-all flex items-center justify-center gap-2 hover:shadow-[0_0_20px_rgba(176,38,255,0.4)] active:scale-95 group cursor-pointer"
             >
-              Download Resume
-              <FiDownload />
+              View Resume
+              <FiExternalLink />
             </a>
           </div>
         </motion.div>
@@ -103,34 +131,34 @@ export default function Hero() {
            className="order-1 lg:order-2 flex justify-center z-10"
         >
             <div className="relative w-64 h-64 md:w-96 md:h-96">
-                {/* Glowing effects behind the image */}
-                <div className="absolute inset-0 bg-brand-blue/30 blur-3xl rounded-full mix-blend-screen animate-pulse" />
-                <div className="absolute -inset-4 bg-gradient-to-tr from-brand-cyan via-brand-purple to-brand-green rounded-full blur-lg opacity-50 animate-spin-slow" style={{ animationDuration: '10s' }} />
+                {/* Subtle outer glow */}
+                <div className="absolute inset-0 bg-brand-pink/20 blur-[50px] rounded-full mix-blend-screen" />
                 
                 {/* Image Container */}
-                <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-bg-dark p-2 bg-bg-dark z-10">
-                    <div className="w-full h-full rounded-full overflow-hidden bg-slate-800 flex items-center justify-center text-slate-500 relative">
+                <div className="relative w-full h-full rounded-full overflow-hidden border border-white/20 p-[2px] bg-gradient-to-tr from-brand-cyan via-brand-purple to-brand-pink z-10 shadow-[0_0_50px_rgba(217,70,239,0.15)] group hover:scale-[1.02] transition-transform duration-700 hover:shadow-[0_0_80px_rgba(217,70,239,0.3)]">
+                    <div className="w-full h-full rounded-full overflow-hidden bg-bg-dark flex items-center justify-center text-slate-500 relative">
                         <img 
                             src={personal.profileImage} 
                             alt={personal.name} 
-                            className="w-full h-full object-cover object-[center_20%] z-10" 
+                            className="w-full h-full object-cover object-[center_20%] z-10 opacity-90 transition-transform duration-700 group-hover:scale-110" 
                             referrerPolicy="no-referrer"
                         />
+                        <div className="absolute inset-0 bg-gradient-to-t from-brand-purple/40 to-transparent opacity-60 z-20 mix-blend-overlay"></div>
                     </div>
                 </div>
 
                 {/* Floating decor */}
                 <motion.div 
-                    animate={{ y: [0, -20, 0] }} 
-                    transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                    className="absolute -top-10 -right-10 w-24 h-24 glass-panel flex items-center justify-center text-brand-cyan text-4xl shadow-[0_0_15px_rgba(0,255,204,0.3)] z-20"
+                    animate={{ y: [0, -15, 0], rotate: [0, 5, 0] }} 
+                    transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                    className="absolute -top-6 -right-6 w-20 h-20 glass-panel flex items-center justify-center text-brand-cyan text-2xl shadow-lg z-20 rounded-2xl border-brand-cyan/30"
                 >
                     <span className="font-mono">&lt;/&gt;</span>
                 </motion.div>
                 <motion.div 
-                    animate={{ y: [0, 20, 0] }} 
+                    animate={{ y: [0, 15, 0], rotate: [0, -5, 0] }} 
                     transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                    className="absolute -bottom-5 -left-10 w-20 h-20 glass-panel flex items-center justify-center text-brand-purple text-4xl shadow-[0_0_15px_rgba(176,38,255,0.3)] z-20"
+                    className="absolute -bottom-6 -left-6 w-16 h-16 glass-panel flex items-center justify-center text-brand-pink text-xl shadow-lg z-20 rounded-[20px] border-brand-pink/30"
                 >
                     <span className="font-mono">{'{}'}</span>
                 </motion.div>
@@ -148,6 +176,64 @@ export default function Hero() {
         <span className="text-xs uppercase tracking-widest">Scroll</span>
         <div className="w-0.5 h-12 bg-gradient-to-b from-white to-transparent" />
       </motion.div>
+
+      {/* Resume Modal */}
+      <AnimatePresence>
+        {showResume && (
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setShowResume(false)}
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-bg-dark/80 backdrop-blur-sm"
+          >
+            <motion.div 
+              initial={{ scale: 0.95, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.95, opacity: 0 }}
+              onClick={(e) => e.stopPropagation()}
+              className="relative w-full max-w-4xl bg-bg-panel border border-white/10 rounded-2xl shadow-2xl overflow-hidden flex flex-col"
+              style={{ maxHeight: 'calc(100vh - 40px)' }}
+            >
+              {/* Modal Header */}
+              <div className="flex items-center justify-between p-4 border-b border-white/10 bg-bg-dark/50">
+                <h3 className="text-lg font-bold text-white truncate pr-4">Resume</h3>
+                <button 
+                  onClick={() => setShowResume(false)}
+                  className="p-2 bg-white/5 hover:bg-white/10 rounded-full transition-colors text-white"
+                >
+                  <FiX size={20} />
+                </button>
+              </div>
+              
+              {/* Modal Content */}
+              <div className="p-4 flex-1 overflow-auto flex items-center justify-center bg-bg-dark/20">
+                <div className="relative w-full rounded-xl overflow-hidden shadow-lg border border-white/5 bg-white">
+                  <img 
+                    src={getThumbnailUrl(personal.resumeLink)} 
+                    alt="Resume" 
+                    className="w-full h-auto object-contain max-h-[70vh] mx-auto"
+                    referrerPolicy="no-referrer"
+                  />
+                </div>
+              </div>
+
+              {/* Modal Footer */}
+              <div className="flex items-center justify-end p-4 border-t border-white/10 bg-bg-dark/50">
+                <a 
+                  href={getDownloadUrl(personal.resumeLink)} 
+                  target="_blank" 
+                  rel="noreferrer"
+                  download="Resume.pdf"
+                  className="px-6 py-2 bg-brand-cyan text-bg-dark font-bold rounded-full hover:bg-brand-cyan/90 transition-all flex items-center gap-2"
+                >
+                  <FiDownload /> Download Original
+                </a>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }

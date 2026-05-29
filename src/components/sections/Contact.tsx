@@ -10,6 +10,7 @@ export default function Contact() {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [errors, setErrors] = useState({ name: '', email: '', message: '' });
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -45,12 +46,35 @@ export default function Contact() {
     setErrors(newErrors);
 
     if (isValid) {
-      // Open default email client
-      window.location.href = `mailto:${contact.email}?subject=Portfolio Contact from ${formData.name}&body=${encodeURIComponent(formData.message)}%0A%0AContact Email: ${formData.email}`;
-      
-      setIsSubmitted(true);
-      setFormData({ name: '', email: '', message: '' });
-      setTimeout(() => setIsSubmitted(false), 5000);
+      // Use FormSubmit to directly send email without opening client
+      setIsSubmitting(true);
+      fetch(`https://formsubmit.co/ajax/${contact.email}`, {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+            name: "Keshav Portfolio",
+            "Visitor Name": formData.name,
+            email: formData.email,
+            message: formData.message,
+            _subject: `New Portfolio Message from ${formData.name}`,
+            _template: "table"
+        })
+      })
+      .then(response => response.json())
+      .then(data => {
+        setIsSubmitting(false);
+        setIsSubmitted(true);
+        setFormData({ name: '', email: '', message: '' });
+        setTimeout(() => setIsSubmitted(false), 5000);
+      })
+      .catch(error => {
+        console.error("Error sending message:", error);
+        setIsSubmitting(false);
+        alert("There was an error sending your message. Please try again later.");
+      });
     }
   };
 
@@ -95,17 +119,7 @@ export default function Contact() {
               </a>
             </motion.div>
 
-            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }}>
-              <a href={`tel:${contact.mobile}`} className="flex items-center gap-3 sm:gap-4 p-4 sm:p-6 glass-panel hover:border-brand-green/50 hover:shadow-[0_0_20px_rgba(57,255,20,0.15)] active:scale-95 transition-all group overflow-hidden">
-                <div className="p-3 sm:p-4 bg-brand-green/10 rounded-full text-brand-green group-hover:scale-110 transition-transform shrink-0">
-                  <FiPhone className="w-5 h-5 sm:w-6 sm:h-6" />
-                </div>
-                <div className="min-w-0 flex-1">
-                  <div className="text-xs sm:text-sm text-slate-400 font-mono">Mobile</div>
-                  <div className="text-sm sm:text-lg text-white font-medium break-all">{contact.mobile}</div>
-                </div>
-              </a>
-            </motion.div>
+
 
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.3 }} className="flex gap-4">
                <a href={contact.linkedin} target="_blank" rel="noreferrer" className="flex-1 flex flex-col items-center justify-center p-6 glass-panel hover:border-[#0077b5]/50 hover:shadow-[0_0_20px_rgba(0,119,181,0.2)] active:scale-95 transition-all group">
@@ -119,13 +133,13 @@ export default function Contact() {
             </motion.div>
             
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.4 }}>
-              <div className="flex items-center gap-4 p-6 glass-panel">
-                <div className="p-3 sm:p-4 bg-brand-purple/10 rounded-full text-brand-purple">
+              <div className="flex items-center gap-3 sm:gap-4 p-4 sm:p-6 glass-panel">
+                <div className="p-3 sm:p-4 bg-brand-purple/10 rounded-full text-brand-purple shrink-0">
                   <FiMapPin className="w-5 h-5 sm:w-6 sm:h-6" />
                 </div>
                 <div className="min-w-0 flex-1">
                   <div className="text-xs sm:text-sm text-slate-400 font-mono">Location</div>
-                  <div className="text-sm sm:text-lg text-white font-medium break-all">{contact.location}</div>
+                  <div className="text-sm md:text-base lg:text-lg text-white font-medium truncate sm:whitespace-normal">{contact.location}</div>
                 </div>
               </div>
             </motion.div>
@@ -190,9 +204,10 @@ export default function Contact() {
 
               <button 
                 type="submit"
-                className="w-full py-4 rounded-xl bg-brand-cyan text-bg-dark font-bold hover:bg-brand-cyan/90 transition-all flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(0,255,204,0.3)] hover:shadow-[0_0_30px_rgba(0,255,204,0.5)] active:scale-95 active:shadow-none"
+                disabled={isSubmitting}
+                className="w-full py-4 rounded-xl bg-brand-cyan text-bg-dark font-bold hover:bg-brand-cyan/90 transition-all flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(0,255,204,0.3)] hover:shadow-[0_0_30px_rgba(0,255,204,0.5)] active:scale-95 active:shadow-none disabled:opacity-75 disabled:active:scale-100"
               >
-                Send Message <FiSend />
+                {isSubmitting ? 'Sending...' : 'Send Message'} <FiSend className={isSubmitting ? 'animate-pulse' : ''} />
               </button>
             </form>
           </motion.div>
@@ -201,4 +216,4 @@ export default function Contact() {
       </div>
     </section>
   );
-            }
+}
