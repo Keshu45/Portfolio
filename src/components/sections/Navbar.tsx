@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { cn } from '../../lib/utils';
-import { FiMenu, FiX } from 'react-icons/fi';
+import { FiMenu, FiX, FiSun, FiMoon } from 'react-icons/fi';
 
 const navLinks = [
   { name: 'Home', href: '#home' },
@@ -15,6 +15,7 @@ const navLinks = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isLightMode, setIsLightMode] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -22,8 +23,25 @@ export default function Navbar() {
     };
     window.addEventListener('scroll', handleScroll);
     
+    const storedTheme = localStorage.getItem('theme');
+    if (storedTheme === 'light') {
+      setIsLightMode(true);
+      document.documentElement.classList.add('light');
+    }
+
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const toggleTheme = () => {
+    setIsLightMode(!isLightMode);
+    if (!isLightMode) {
+      document.documentElement.classList.add('light');
+      localStorage.setItem('theme', 'light');
+    } else {
+      document.documentElement.classList.remove('light');
+      localStorage.setItem('theme', 'dark');
+    }
+  };
 
   return (
     <header
@@ -58,15 +76,30 @@ export default function Navbar() {
           >
             Hire Me
           </a>
+          <button 
+            onClick={toggleTheme}
+            className="p-2 text-slate-300 hover:text-white transition-colors"
+            title="Toggle theme"
+          >
+            {isLightMode ? <FiMoon size={20} /> : <FiSun size={20} />}
+          </button>
         </nav>
 
         {/* Mobile Toggle */}
-        <button
-          className="md:hidden text-slate-300 hover:text-white"
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-        >
-          {mobileMenuOpen ? <FiX size={24} /> : <FiMenu size={24} />}
-        </button>
+        <div className="flex items-center gap-4 md:hidden">
+          <button 
+            onClick={toggleTheme}
+            className="text-slate-300 hover:text-white transition-colors"
+          >
+            {isLightMode ? <FiMoon size={24} /> : <FiSun size={24} />}
+          </button>
+          <button
+            className="text-slate-300 hover:text-white"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          >
+            {mobileMenuOpen ? <FiX size={24} /> : <FiMenu size={24} />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Nav */}

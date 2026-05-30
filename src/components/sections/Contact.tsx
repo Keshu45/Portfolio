@@ -55,10 +55,10 @@ export default function Contact() {
             'Accept': 'application/json'
         },
         body: JSON.stringify({
-            name: "Keshav Portfolio",
-            "Visitor Name": formData.name,
+            name: formData.name,
             email: formData.email,
             message: formData.message,
+            "Submitted At (IST)": new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" }),
             _subject: `New Portfolio Message from ${formData.name}`,
             _template: "table"
         })
