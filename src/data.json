@@ -121,32 +121,32 @@
   "certificates": [
     {
       "title": "Database Management System",
-      "issuer": "",
-      "date": "2024",
+      "issuer": "NPTEL",
+      "date": "2025",
       "link": "https://drive.google.com/file/d/1jcKT0g28sa9QnZe99wzMXpzWj9ruEHvg/view?usp=drivesdk"
     },
     {
       "title": "Fortinet Certified Fundamental in Cybersecurity",
       "issuer": "Fortinet",
-      "date": "2024",
+      "date": "2025",
       "link": "https://drive.google.com/file/d/1xfaTGHie7tfC55snCOr6YCqXYs7BAHLJ/view?usp=drivesdk"
     },
     {
       "title": "Fundamental of Object Oriented programming Methodology",
-      "issuer": "",
-      "date": "2024",
+      "issuer": "NPTEL",
+      "date": "2025",
       "link": "https://drive.google.com/file/d/1nbhHBwdajndaa0-XtcfyBry8eGE4Fsx_/view?usp=drivesdk"
     },
     {
       "title": "Programming in Java",
-      "issuer": "",
-      "date": "2024",
+      "issuer": "NPTEL",
+      "date": "2025",
       "link": "https://drive.google.com/file/d/1qTGyinM61wXI76V8K8YInwKqBjnYsggL/view?usp=drivesdk"
     },
     {
       "title": "Oracle generative AI",
       "issuer": "Oracle",
-      "date": "2024",
+      "date": "2025",
       "link": "https://drive.google.com/file/d/1Dr14gcU_8etnR5EoOpi7W7LaD3ITXf-m/view?usp=drivesdk"
     }
   ],
